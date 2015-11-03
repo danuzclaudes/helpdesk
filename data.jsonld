@@ -10,36 +10,31 @@
     "time": "http://schema.org/dateCreated",
     "comments": "http://schema.org/comment"
   },
-  "@id": "requests",
-  "helprequests":
-  { "fhs6jo" :
-    { "@type": "helpdesk:HelpRequest",
-      "@id": "request/fhs6jo",
-      "title" : "Help my computer doesn't work",
-      "description" : "Maybe because I dropped it in the bathtub?",
-      "from" : "gary@unc.edu",
-      "time" : "2014-10-13T12:00:4",
-      "priority": 3,
-      "comments": [ "needs to be fixed before he goes to China next week" ]
+  "@id": "notelist",
+  "notes":
+  { "note1" :
+    { "@type": "notebook:note",
+      "@id": "note/note1",
+      "title" : "Senator gets coffee",
+      "notecontent" : "Today, Senator Shaw left the office to get coffee.  He went to Starbucks.",
+      "author" : "Metta Longo",
+      "date" : "2015-11-3"
     },
-    "dig73h":
-    { "@type": "helpdesk:HelpRequest",
-      "@id": "request/dig73h",
-      "title" : "Out of ink",
-      "description" : "I printed Twitter and now my printer is out of ink",
-      "from" : "paul@unc.edu",
-      "time" : "2014-10-12T07:08:20",
-      "priority": 2
+    "note2":
+    { "@type": "notebook:note",
+      "@id": "note/note2",
+      "title" : "Senator drinks coffee",
+      "notecontent" : "After returning to the office from Starbucks, Senator Shaw enjoyed his Pumpkin Spice Latte.",
+      "author" : "Tina Xu",
+      "date" : "2015-11-3"
     },
-    "0f4uqv":
-    { "@type": "helpdesk:HelpRequest",
-      "@id": "request/0f4uqv",
-      "title" : "Need to install Solitaire",
-      "description" : "My new laptop doesn't have Solitaire on it and I really need it",
-      "from" : "ryanshaw@unc.edu",
-      "time" : "2014-10-12T23:40:21",
-      "priority": 1,
-      "comments": [ "this is not very important" ]
+    "note3":
+    { "@type": "notebook:note",
+      "@id": "note/note3",
+      "title" : "Senator spills coffee",
+      "notecontent" : "Senator Shaw sat behind his desk in a swivel chair and leaned back to drink his coffee.  Unfortunately, Senator Shaw leaned back a little too far with a little too much force and spilled his coffee all down his front.",
+      "author" : "Chongrui Zhang",
+      "date" : "2015-11-3"
     }
   }
 }
