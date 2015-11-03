@@ -1,4 +1,6 @@
 .Python
+.idea/
+venv/
 bin/
 include/
 lib/
