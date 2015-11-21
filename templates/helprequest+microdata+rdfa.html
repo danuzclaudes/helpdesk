@@ -2,10 +2,7 @@
 <link rel="alternate" type="application/json" href="{{ request.path }}.json">
 <title>{{ helprequest.title }}</title>
 
-<body itemscope itemtype="http://schema.org/CreativeWork/HelpRequest"
-                vocab="http://schema.org/"
-                prefix="helpdesk:https://rawgit.com/sils-webinfo/helpdesk/master/vocab.ttl#"
-                typeof="helpdesk:HelpRequest">
+<body>
 
 <a href="http://www.w3.org/2012/pyRdfa/extract?uri=referer">
 view data extracted from RDFa markup</a><br>
@@ -14,40 +11,23 @@ view data extracted from microdata markup</a><br>
 <a href="{{ request.path }}.json">
 view data as JSON-LD</a>
 
-<h1 class="title" itemprop="name" property="name">{{ helprequest.title }}</h1>  
+<h1 class="title">{{ helprequest.title }}</h1>
 
-<p class="description" itemprop="description" property="description">{{ helprequest. description }}</p>
+<p class="description">{{ helprequest.note_content }}</p>
 
-<p class="from" itemprop="creator" itemscope itemtype="http://schema.org/Person"
-   property="creator" typeof="Person">>
-  <span itemprop="email" property="email">{{ helprequest.from }}</span>
+<p class="from">
+  <span>{{ helprequest.author.name }}</span>
 </p>
 
-<time itemprop="dateCreated" property="dateCreated"
-      datetime="{{ helprequest.time }}">{{ helprequest.time }}</time>
+<time
+      datetime="{{ helprequest.date }}">{{ helprequest.date }}</time>
 
 <form class="help-request-editor" method="patch">
-  <label>priority
-  <select name="priority">
-    {% for value, label in priorities %}
-    <option value="{{ value }}" {% if helprequest.priority == value %}selected{% endif %}>
-      {{ label }}
-    </option>
-    {% endfor %}
-    </select>
-  </label>
   <br>
 
   <label>comments<br>
-    <ul>
-      {% for comment in helprequest.comments %}
-      <li itemprop="comment" itemscope itemtype="http://schema.org/Comment"
-          property="comment" typeof="Comment">
-        <p itemprop="text" property="text">{{ comment }}</p>
-      </li>
-      {% endfor %}
-    </ul>
-    <textarea name="comment"></textarea>
+
+    <textarea name="note_content">{{helprequest.note_content}}</textarea>
   </label>
   <br>
   <input class="update" type="submit" value="update help request">

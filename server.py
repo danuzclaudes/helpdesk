@@ -5,6 +5,7 @@ import json
 import string
 import random
 from datetime import datetime
+import pdb
 
 # Define our priority levels.
 # These are the values that the "priority" property can take on a help request.
@@ -24,19 +25,19 @@ def generate_id(size=6, chars=string.ascii_lowercase + string.digits):
 
 # Respond with 404 Not Found if no help request with the specified ID exists.
 def error_if_helprequest_not_found(helprequest_id):
-    if helprequest_id not in data['helprequests']:
+    if helprequest_id not in data['notes']:
         message = "No help request with ID: {}".format(helprequest_id)
         abort(404, message=message)
 
 
 # Filter and sort a list of helprequests.
-def filter_and_sort_helprequests(query='', sort_by='time'):
+def filter_and_sort_helprequests(query='', sort_by='date'):
 
     # Returns True if the query string appears in the help request's
     # title or description.
     def matches_query(item):
         (helprequest_id, helprequest) = item
-        text = helprequest['title'] + helprequest['description']
+        text = helprequest['title'] + helprequest['note_content']
         return query.lower() in text
 
     # Returns the help request's value for the sort property (which by
@@ -45,7 +46,7 @@ def filter_and_sort_helprequests(query='', sort_by='time'):
         (helprequest_id, helprequest) = item
         return helprequest[sort_by]
 
-    filtered_helprequests = filter(matches_query, data['helprequests'].items())
+    filtered_helprequests = filter(matches_query, data['notes'].items())
 
     return sorted(filtered_helprequests, key=get_sort_value, reverse=True)
 
@@ -79,7 +80,7 @@ def nonempty_string(x):
 # Specify the data necessary to create a new help request.
 # "from", "title", and "description" are all required values.
 new_helprequest_parser = reqparse.RequestParser()
-for arg in ['from', 'title', 'description']:
+for arg in ['author', 'title', 'note_content']:
     new_helprequest_parser.add_argument(
         arg, type=nonempty_string, required=True,
         help="'{}' is a required value".format(arg))
@@ -91,7 +92,7 @@ update_helprequest_parser = reqparse.RequestParser()
 update_helprequest_parser.add_argument(
     'priority', type=int, default=PRIORITIES.index('normal'))
 update_helprequest_parser.add_argument(
-    'comment', type=str, default='')
+    'note_content', type=str, default='')
 
 
 # Specify the parameters for filtering and sorting help requests.
@@ -100,7 +101,7 @@ query_parser = reqparse.RequestParser()
 query_parser.add_argument(
     'query', type=str, default='')
 query_parser.add_argument(
-    'sort_by', type=str, choices=('priority', 'time'), default='time')
+    'sort_by', type=str, choices=('priority', 'date'), default='date')
 
 
 # Define our help request resource.
@@ -112,18 +113,19 @@ class HelpRequest(Resource):
         error_if_helprequest_not_found(helprequest_id)
         return make_response(
             render_helprequest_as_html(
-                data['helprequests'][helprequest_id]), 200)
+                data['notes'][helprequest_id]), 200)
 
     # If a help request with the specified ID does not exist,
     # respond with a 404, otherwise update the help request and respond
     # with the updated HTML representation.
     def patch(self, helprequest_id):
         error_if_helprequest_not_found(helprequest_id)
-        helprequest = data['helprequests'][helprequest_id]
+        helprequest = data['notes'][helprequest_id]
         update = update_helprequest_parser.parse_args()
         helprequest['priority'] = update['priority']
-        if len(update['comment'].strip()) > 0:
-            helprequest.setdefault('comments', []).append(update['comment'])
+        if len(update['note_content'].strip()) > 0:
+            helprequest['note_content'] = update['note_content']
+
         return make_response(
             render_helprequest_as_html(helprequest), 200)
 
@@ -135,7 +137,7 @@ class HelpRequestAsJSON(Resource):
     # respond with a 404, otherwise respond with a JSON representation.
     def get(self, helprequest_id):
         error_if_helprequest_not_found(helprequest_id)
-        helprequest = data['helprequests'][helprequest_id]
+        helprequest = data['notes'][helprequest_id]
         helprequest['@context'] = data['@context']
         return helprequest
 
@@ -155,9 +157,9 @@ class HelpRequestList(Resource):
     # representation of the updated list.
     def post(self):
         helprequest = new_helprequest_parser.parse_args()
-        helprequest['time'] = datetime.isoformat(datetime.now())
+        helprequest['date'] = datetime.isoformat(datetime.now())
         helprequest['priority'] = PRIORITIES.index('normal')
-        data['helprequests'][generate_id()] = helprequest
+        data['notes'][generate_id()] = helprequest
         return make_response(
             render_helprequest_list_as_html(
                 filter_and_sort_helprequests()), 201)
