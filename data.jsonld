@@ -18,7 +18,7 @@
       { "@type": "notebook:note",
         "@id": "note/note1",
         "title": "Senator gets coffee",
-        "note_content": "Today, Senator Shaw left the office to get coffee.  He went to Starbucks.",
+        "note_content": "<h3>Today, Senator Shaw left the office to get coffee.  He went to Starbucks.</h3>",
         "author":
       {   "@id": "http://linkedin.com/MettaL",
           "name": "Metta",
