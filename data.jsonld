@@ -1,9 +1,15 @@
-{"@context":{
-    "note": "https://schema.org/CreativeWork",
+{"@context":
+ {"note": "https://schema.org/CreativeWork",
     "notes":
     { "@id": "http://www.w3.org/2000/01/rdf-schema#member",
       "@container": "@index"
     },
+    "author":
+    { "@id": "http://purl.org/dcterms/creator",
+      "@type": "foaf:person"
+    },
+    "profile url": "@id",
+    "name": "http://schema.org",
     "title": "http://schema.org/title",
     "note content": "http://schema.org/text",
     "date":
@@ -11,47 +17,44 @@
       "@type": "http://w3.org/2001/xml/schema#date"
     },
     "foaf": "http://purl.org/foaf"
-},
-"@id": "notelist",
-"notes":
+ },
+    "@id": "notelist",
+    "notes":
     { "note1":
       { "@type": "notebook:note",
         "@id": "note/note1",
         "title": "Senator gets coffee",
-        "note_content": "Today, Senator Shaw left the office to get coffee.  He went to Starbucks.",
+        "note content": "Today, Senator Shaw left the office to get coffee.  He went to Starbucks.",
         "author":
-      {   "@id": "http://linkedin.com/MettaL",
+      {   "profile url": "http://linkedin.com/MettaL",
           "name": "Metta",
           "@type": "foaf:person"
         },
-        "date": "2015-11-3",
-        "priority":"normal"
+        "date": "2015-11-3"
       },
       "note2":
       { "@type": "notebook:note",
         "@id": "note/note2",
         "title": "Senator drinks coffee",
-        "note_content": "After returning to the office from Starbucks, Senator Shaw enjoyed his Pumpkin Spice Latte.",
+        "note content": "After returning to the office from Starbucks, Senator Shaw enjoyed his Pumpkin Spice Latte.",
         "date": "2015-11-3",
         "author":
-        { "@id": "http://linkedin.com/TinaXu",
+        { "profile url": "http://linkedin.com/TinaXu",
           "name": "Tina Xu",
           "@type": "foaf:person"
-        },
-         "priority":"normal"
+        }
       },
       "note3":
       { "@type": "notebook:note",
         "@id": "note/note3",
         "title": "Senator spills coffee",
-        "note_content": "Senator Shaw sat behind his desk in a swivel chair and leaned back to drink his coffee.  Unfortunately, Senator Shaw leaned back a little too far with a little too much force and spilled his coffee all down his front.",
+        "note content": "Senator Shaw sat behind his desk in a swivel chair and leaned back to drink his coffee.  Unfortunately, Senator Shaw leaned back a little too far with a little too much force and spilled his coffee all down his front.",
         "author":
-        { "@id": "http://linkedin.com/Chongrui Zhang",
+        { "profile url": "http://linkedin.com/Chongrui Zhang",
           "name": "Chongrui Zhang",
           "@type": "foaf:person"
         },
-        "date": "2015-11-3",
-         "priority":"normal"
+        "date": "2015-11-3"
       }
     }
 }
