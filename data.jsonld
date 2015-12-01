@@ -11,7 +11,7 @@
     "profile url": "@id",
     "name": "http://schema.org",
     "title": "http://schema.org/title",
-    "note content": "http://schema.org/text",
+    "note_content": "http://schema.org/text",
     "date":
     { "@id": "http://schema.org/dateCreated",
       "@type": "http://w3.org/2001/xml/schema#date"
@@ -24,7 +24,7 @@
       { "@type": "notebook:note",
         "@id": "note/note1",
         "title": "Senator gets coffee",
-        "note content": "Today, Senator Shaw left the office to get coffee.  He went to Starbucks.",
+        "note_content": "Today, Senator Shaw left the office to get coffee.  He went to Starbucks.",
         "author":
       {   "profile url": "http://linkedin.com/MettaL",
           "name": "Metta",
@@ -36,7 +36,7 @@
       { "@type": "notebook:note",
         "@id": "note/note2",
         "title": "Senator drinks coffee",
-        "note content": "After returning to the office from Starbucks, Senator Shaw enjoyed his Pumpkin Spice Latte.",
+        "note_content": "After returning to the office from Starbucks, Senator Shaw enjoyed his Pumpkin Spice Latte.",
         "date": "2015-11-3",
         "author":
         { "profile url": "http://linkedin.com/TinaXu",
@@ -48,7 +48,7 @@
       { "@type": "notebook:note",
         "@id": "note/note3",
         "title": "Senator spills coffee",
-        "note content": "Senator Shaw sat behind his desk in a swivel chair and leaned back to drink his coffee.  Unfortunately, Senator Shaw leaned back a little too far with a little too much force and spilled his coffee all down his front.",
+        "note_content": "Senator Shaw sat behind his desk in a swivel chair and leaned back to drink his coffee.  Unfortunately, Senator Shaw leaned back a little too far with a little too much force and spilled his coffee all down his front.",
         "author":
         { "profile url": "http://linkedin.com/Chongrui Zhang",
           "name": "Chongrui Zhang",
