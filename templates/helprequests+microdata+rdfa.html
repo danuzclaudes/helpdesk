@@ -18,20 +18,27 @@
   <input class="query" type="submit" value="search">
 </form>
 -->
+<h1>Notebook</h1>
 
-<ol>
+<table class="notes-table" style="width: 100%; border: 1px solid black;">
+  <tr><td>Time</td><td>Title</td><td>Author</td></tr>
   {% for helprequest_id, helprequest in helprequests %}
-  <li>
-    <div>
-    <time>{{ helprequest.date }}</time>
-    Title:
+  <tr>
+    <td><time>{{ helprequest.date }}</time></td>
+    <td>
     <a href="{{ url_for('helprequest', helprequest_id=helprequest_id) }}">
       <span>{{ helprequest.title }}</span>
     </a>
-    </div>
-  </li>
+    </td>
+    <td>
+      <a href="{{ helprequest.author.profile_url }}">
+      <span>{{ helprequest.author.name }}</span></a>
+    </td>
+  </tr>
   {% endfor %}
-</ol>
+</table>
+
+<br>
 
 <form class="helprequest-editor" action="{{ url_for('helprequestlist') }}" method="post">
   <label>author

@@ -8,7 +8,7 @@
     { "@id": "http://purl.org/dcterms/creator",
       "@type": "foaf:person"
     },
-    "profile url": "@id",
+    "profile_url": "@id",
     "name": "http://schema.org",
     "title": "http://schema.org/title",
     "note_content": "http://schema.org/text",
@@ -26,7 +26,7 @@
         "title": "Senator gets coffee",
         "note_content": "Today, Senator Shaw left the office to get coffee.  He went to Starbucks.",
         "author":
-      {   "profile url": "http://linkedin.com/MettaL",
+      {   "profile_url": "http://linkedin.com/MettaL",
           "name": "Metta",
           "@type": "foaf:person"
         },
@@ -39,7 +39,7 @@
         "note_content": "After returning to the office from Starbucks, Senator Shaw enjoyed his Pumpkin Spice Latte.",
         "date": "2015-11-3",
         "author":
-        { "profile url": "http://linkedin.com/TinaXu",
+        { "profile_url": "http://linkedin.com/TinaXu",
           "name": "Tina Xu",
           "@type": "foaf:person"
         }
@@ -50,7 +50,7 @@
         "title": "Senator spills coffee",
         "note_content": "Senator Shaw sat behind his desk in a swivel chair and leaned back to drink his coffee.  Unfortunately, Senator Shaw leaned back a little too far with a little too much force and spilled his coffee all down his front.",
         "author":
-        { "profile url": "http://linkedin.com/Chongrui Zhang",
+        { "profile_url": "http://linkedin.com/Chongrui Zhang",
           "name": "Chongrui Zhang",
           "@type": "foaf:person"
         },
