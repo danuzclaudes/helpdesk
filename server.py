@@ -82,7 +82,7 @@ def nonempty_string(x):
 new_helprequest_parser = reqparse.RequestParser()
 for arg in ['author', 'title', 'note_content']:
     new_helprequest_parser.add_argument(
-        arg, type=nonempty_string, required=True,
+        arg, type=nonempty_string, # required=True,
         help="'{}' is a required value".format(arg))
 
 
@@ -158,6 +158,7 @@ class HelpRequestList(Resource):
     # representation of the updated list.
     def post(self):
         helprequest = new_helprequest_parser.parse_args()
+        helprequest['author'] = {'name' : '{}'.format(helprequest['author'])}
         helprequest['date'] = datetime.isoformat(datetime.now())
         helprequest['priority'] = PRIORITIES.index('normal')
         # helprequest['note_content'] = helprequest['note_content'].replace('\r\n', '<br>')
