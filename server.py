@@ -123,6 +123,7 @@ class HelpRequest(Resource):
         helprequest = data['notes'][helprequest_id]
         update = update_helprequest_parser.parse_args()
         helprequest['priority'] = update['priority']
+        # helprequest['note_content'] = helprequest['note_content'].replace('\r\n', '<br>')
         if len(update['note_content'].strip()) > 0:
             helprequest['note_content'] = update['note_content']
 
@@ -159,6 +160,7 @@ class HelpRequestList(Resource):
         helprequest = new_helprequest_parser.parse_args()
         helprequest['date'] = datetime.isoformat(datetime.now())
         helprequest['priority'] = PRIORITIES.index('normal')
+        # helprequest['note_content'] = helprequest['note_content'].replace('\r\n', '<br>')
         data['notes'][generate_id()] = helprequest
         return make_response(
             render_helprequest_list_as_html(

@@ -13,8 +13,6 @@ view data as JSON-LD</a>
 
 <h1 class="title">{{ helprequest.title }}</h1>
 
-<p class="description">{{ helprequest.note_content }}</p>
-
 <p class="from">
   <span>{{ helprequest.author.name }}</span>
 </p>
@@ -25,12 +23,12 @@ view data as JSON-LD</a>
 <form class="help-request-editor" method="patch">
   <br>
 
-  <label>comments<br>
+  <label>Content<br>
 
-    <textarea name="note_content">{{helprequest.note_content}}</textarea>
+    <textarea rows="20" cols="80" name="note_content">{{helprequest.note_content}}</textarea>
   </label>
   <br>
-  <input class="update" type="submit" value="update help request">
+  <input class="update" type="submit" value="update note">
   <script>
     var form = document.querySelector('form.help-request-editor');
     var button = document.querySelector('form.help-request-editor input.update');
