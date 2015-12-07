@@ -102,7 +102,7 @@ query_parser = reqparse.RequestParser()
 query_parser.add_argument(
     'query', type=str, default='')
 query_parser.add_argument(
-    'sort_by', type=str, choices=('priority', 'date'), default='date')
+    'sort_by', type=str, choices=('title', 'date', 'author'), default='date')
 
 
 # Define our help request resource.
