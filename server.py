@@ -9,7 +9,7 @@ import pdb
 
 # Define our priority levels.
 # These are the values that the "priority" property can take on a help request.
-PRIORITIES = ('closed', 'low', 'normal', 'high')
+#PRIORITIES = ('closed', 'low', 'normal', 'high')
 
 # Load data from disk.
 # This simply loads the data from our "database," which is just a JSON file.
@@ -55,8 +55,7 @@ def filter_and_sort_helprequests(query='', sort_by='date'):
 def render_helprequest_as_html(helprequest):
     return render_template(
         'helprequest+microdata+rdfa.html',
-        helprequest=helprequest,
-        priorities=reversed(list(enumerate(PRIORITIES))))
+        helprequest=helprequest)
 
 
 # Given the data for a list of help requests, generate an HTML representation
@@ -64,8 +63,7 @@ def render_helprequest_as_html(helprequest):
 def render_helprequest_list_as_html(helprequests):
     return render_template(
         'helprequests+microdata+rdfa.html',
-        helprequests=helprequests,
-        priorities=PRIORITIES)
+        helprequests=helprequests)
 
 
 # Raises an error if the string x is empty (has zero length).
@@ -90,8 +88,8 @@ new_helprequest_parser.add_argument(
 # Specify the data necessary to update an existing help request.
 # Only the priority and comments can be updated.
 update_helprequest_parser = reqparse.RequestParser()
-update_helprequest_parser.add_argument(
-    'priority', type=int, default=PRIORITIES.index('normal'))
+# update_helprequest_parser.add_argument(
+#     'priority', type=int, default=PRIORITIES.index('normal'))
 update_helprequest_parser.add_argument(
     'note_content', type=str, default='')
 
@@ -123,7 +121,7 @@ class HelpRequest(Resource):
         error_if_helprequest_not_found(helprequest_id)
         helprequest = data['notes'][helprequest_id]
         update = update_helprequest_parser.parse_args()
-        helprequest['priority'] = update['priority']
+        # helprequest['priority'] = update['priority']
         # helprequest['note_content'] = helprequest['note_content'].replace('\r\n', '<br>')
         if len(update['note_content'].strip()) > 0:
             helprequest['note_content'] = update['note_content']
@@ -165,7 +163,7 @@ class HelpRequestList(Resource):
                                  'profile_url' : '{}'.format(helprequest['profile_url']),
                                  '@type': 'foaf:person'}
         helprequest['date'] = "{:%Y-%m-%d}".format(datetime.now())
-        helprequest['priority'] = PRIORITIES.index('normal')
+        # helprequest['priority'] = PRIORITIES.index('normal')
         helprequest["@type"] = "notebook:note"
         helprequest["@id"] = "note/" + id
         del helprequest['profile_url']
