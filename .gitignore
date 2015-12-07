@@ -6,3 +6,9 @@ lib/
 local/
 share/
 venv/
+
+# Twitter API Key
+secrets.py
+
+# Compiled python code.
+*.pyc

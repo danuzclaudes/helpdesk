@@ -1,11 +1,14 @@
-from flask import Flask, render_template, make_response, redirect
-from flask.ext.restful import Api, Resource, reqparse, abort
 import io
 import json
-import string
-import random
-from datetime import datetime
 import pdb
+import random
+import string
+
+from datetime import datetime
+from flask import Flask, render_template, make_response, redirect
+from flask.ext.restful import Api, Resource, reqparse, abort
+
+from twitter import Twitter
 
 # Define our priority levels.
 # These are the values that the "priority" property can take on a help request.
@@ -61,9 +64,12 @@ def render_helprequest_as_html(helprequest):
 # Given the data for a list of help requests, generate an HTML representation
 # of that list.
 def render_helprequest_list_as_html(helprequests):
+    twitter = Twitter()
+    twitter.search('from:rybesh')
     return render_template(
         'helprequests+microdata+rdfa.html',
-        helprequests=helprequests)
+        helprequests=helprequests,
+        tdata=twitter.search('from:rybesh'))
 
 
 # Raises an error if the string x is empty (has zero length).

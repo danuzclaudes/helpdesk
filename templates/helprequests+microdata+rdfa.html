@@ -53,3 +53,13 @@
   <br>  
   <input class="create" type="submit" value="Create new note">
 </form>
+<br>
+<h2><a href="https://twitter.com/rybesh">Listen from Senator Ryan:</a></h2>
+<div class="twitters" style="width: 800px; border: 1px solid black;">
+  <ul>
+  {% for (creation_date, text) in tdata[:5] %}
+  <li><pre>{{ creation_date }}</pre></li>
+  <span>{{ text }}</span>
+  {% endfor %}
+  </ul>
+</div>
