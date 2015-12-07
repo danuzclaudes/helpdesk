@@ -14,8 +14,10 @@ view data as JSON-LD</a>
 <h1 class="title">{{ helprequest.title }}</h1>
 
 <p class="from">
-  <span>{{ helprequest.author.name }}</span>
+  <a href="{{ helprequest.author.profile_url }}">
+      <span>{{ helprequest.author.name }}</span></a>
 </p>
+
 
 <time
       datetime="{{ helprequest.date }}">{{ helprequest.date }}</time>

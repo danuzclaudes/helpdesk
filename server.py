@@ -1,6 +1,6 @@
 from flask import Flask, render_template, make_response, redirect
 from flask.ext.restful import Api, Resource, reqparse, abort
-
+import io
 import json
 import string
 import random
@@ -15,7 +15,6 @@ PRIORITIES = ('closed', 'low', 'normal', 'high')
 # This simply loads the data from our "database," which is just a JSON file.
 with open('data.jsonld') as data:
     data = json.load(data)
-
 
 # Generate a unique ID for a new help request.
 # By default this will consist of six lowercase numbers and letters.
@@ -84,6 +83,8 @@ for arg in ['author', 'title', 'note_content']:
     new_helprequest_parser.add_argument(
         arg, type=nonempty_string, # required=True,
         help="'{}' is a required value".format(arg))
+new_helprequest_parser.add_argument(
+    'profile_url', type=str, default='')
 
 
 # Specify the data necessary to update an existing help request.
@@ -126,7 +127,8 @@ class HelpRequest(Resource):
         # helprequest['note_content'] = helprequest['note_content'].replace('\r\n', '<br>')
         if len(update['note_content'].strip()) > 0:
             helprequest['note_content'] = update['note_content']
-
+        with open('data.jsonld', 'w') as d:
+            json.dump(data, d, ensure_ascii=False)
         return make_response(
             render_helprequest_as_html(helprequest), 200)
 
@@ -157,12 +159,19 @@ class HelpRequestList(Resource):
     # Add a new help request to the list, and respond with an HTML
     # representation of the updated list.
     def post(self):
+        id = generate_id()
         helprequest = new_helprequest_parser.parse_args()
-        helprequest['author'] = {'name' : '{}'.format(helprequest['author'])}
+        helprequest['author'] = {'name' : '{}'.format(helprequest['author']),
+                                 'profile_url' : '{}'.format(helprequest['profile_url']),
+                                 '@type': 'foaf:person'}
         helprequest['date'] = "{:%Y-%m-%d}".format(datetime.now())
         helprequest['priority'] = PRIORITIES.index('normal')
-        # helprequest['note_content'] = helprequest['note_content'].replace('\r\n', '<br>')
-        data['notes'][generate_id()] = helprequest
+        helprequest["@type"] = "notebook:note"
+        helprequest["@id"] = "note/" + id
+        del helprequest['profile_url']
+        data['notes'][id] = helprequest
+        with open('data.jsonld', 'w') as d:
+            json.dump(data, d, ensure_ascii=False)
         return make_response(
             render_helprequest_list_as_html(
                 filter_and_sort_helprequests()), 201)

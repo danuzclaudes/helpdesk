@@ -41,15 +41,19 @@
 <br>
 
 <form class="helprequest-editor" action="{{ url_for('helprequestlist') }}" method="post">
-  <label>author
+  <label>Author
     <input name="author" type="text">
   </label>
   <br>
-  <label>title
+  <label>Profile URL
+    <input name="profile_url" type="text">
+  </label>
+  <br>
+  <label>Title
     <input name="title" type="text">
   </label>
   <br>
   <textarea rows="20" cols="80" name="note_content"></textarea>
   <br>  
-  <input class="create" type="submit" value="create new note">
+  <input class="create" type="submit" value="Create new note">
 </form>
