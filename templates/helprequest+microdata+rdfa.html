@@ -4,16 +4,12 @@
 
 <body>
 
-<a href="http://www.w3.org/2012/pyRdfa/extract?uri=referer">
-view data extracted from RDFa markup</a><br>
-<a href="http://getschema.org/microdataextractor?url={{ request.url }}&out=json">
-view data extracted from microdata markup</a><br>  
 <a href="{{ request.path }}.json">
 view data as JSON-LD</a>
 
 <h1 class="title">{{ helprequest.title }}</h1>
 
-<p class="from">
+<p class="author">
   <a href="{{ helprequest.author.profile_url }}">
       <span>{{ helprequest.author.name }}</span></a>
 </p>
@@ -25,7 +21,7 @@ view data as JSON-LD</a>
 <form class="help-request-editor" method="patch">
   <br>
 
-  <label>Content<br>
+  <label class="content">Content<br>
 
     <textarea rows="20" cols="80" name="note_content">{{helprequest.note_content}}</textarea>
   </label>
