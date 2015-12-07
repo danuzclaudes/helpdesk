@@ -159,7 +159,7 @@ class HelpRequestList(Resource):
     def post(self):
         helprequest = new_helprequest_parser.parse_args()
         helprequest['author'] = {'name' : '{}'.format(helprequest['author'])}
-        helprequest['date'] = datetime.isoformat(datetime.now())
+        helprequest['date'] = "{:%Y-%m-%d}".format(datetime.now())
         helprequest['priority'] = PRIORITIES.index('normal')
         # helprequest['note_content'] = helprequest['note_content'].replace('\r\n', '<br>')
         data['notes'][generate_id()] = helprequest
