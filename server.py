@@ -190,10 +190,10 @@ class HelpRequestListAsJSON(Resource):
 # Assign URL paths to our resources.
 app = Flask(__name__)
 api = Api(app)
-api.add_resource(HelpRequestList, '/requests')
-api.add_resource(HelpRequestListAsJSON, '/requests.json')
-api.add_resource(HelpRequest, '/request/<string:helprequest_id>')
-api.add_resource(HelpRequestAsJSON, '/request/<string:helprequest_id>.json')
+api.add_resource(HelpRequestList, '/notebook')
+api.add_resource(HelpRequestListAsJSON, '/notebook.json')
+api.add_resource(HelpRequest, '/note/<string:helprequest_id>')
+api.add_resource(HelpRequestAsJSON, '/note/<string:helprequest_id>.json')
 
 
 # Redirect from the index to the list of help requests.
