@@ -1,0 +1,68 @@
+<!doctype html>
+<link rel="alternate" type="application/json" href="{{ request.path }}.json">
+<title>Notebook</title>
+<body>
+<!--
+{% if request.args["sort_by"] == "title" %}
+<a href="{{ url_for('notelist') }}?sort_by=date">sort by date</a>
+{% else %}
+<a href="{{ url_for('notelist') }}?sort_by=title">sort by title</a>
+{% endif %}
+-->
+
+<h1>Notebook</h1>
+
+<table class="notes-table" style="width: 100%; border: 1px solid black;">
+  <tr>
+    <td class="date"><a rel="https://aeshin.org/teaching/inls-620/2015/fa/notebook/collection" href="{{ url_for('notelist') }}?sort_by=date">Date</a></td>
+    <td class="title"><a rel="https://aeshin.org/teaching/inls-620/2015/fa/notebook/collection" href="{{ url_for('notelist') }}?sort_by=title">Title</a></td>
+    <td class="author"><a rel="https://aeshin.org/teaching/inls-620/2015/fa/notebook/collection" href="{{ url_for('notelist') }}?sort_by=author">Author</a></td>
+  </tr>
+  {% for note_id, note in notes %}
+  <tr class="note">
+    <td class="date"><time>{{ note.date }}</time></td>
+    <td class="title">
+    <a rel="https://aeshin.org/teaching/inls-620/2015/fa/notebook/item" href="{{ url_for('note', note_id=note_id) }}">
+      <span>{{ note.title }}</span>
+    </a>
+    </td>
+    <td class="author">
+      <a href="{{ note.author.profile_url }}">
+      <span>{{ note.author.name }}</span></a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+<br>
+
+<form class="createNote" action="{{ url_for('notelist') }}" method="post">
+  <label>Author
+    <input name="author" type="text">
+  </label>
+  <br>
+  <label>Profile URL
+    <input name="profile_url" type="text">
+  </label>
+  <br>
+  <label>Title
+    <input name="title" type="text">
+  </label>
+  <br>
+  <textarea rows="20" cols="80" name="note_content"></textarea>
+  <br>  
+  <input class="create" type="submit" value="Create new note">
+</form>
+<br>
+<h2><a href="https://twitter.com/rybesh">Listen from Senator Ryan:</a></h2>
+<div class="twitters" style="width: 800px; border: 1px solid black;">
+  <ul>
+  {% for (creation_date, text) in tdata[:5] %}
+  <li>
+    <pre>{{ creation_date }}</pre>
+    <span>{{ text }}</span>
+  </li>
+  {% endfor %}
+  </ul>
+</div>
+</body>

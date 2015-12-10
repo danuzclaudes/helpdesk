@@ -1,7 +1,7 @@
 {
   "@context": {
-    "foaf": "http://purl.org/foaf",
-    "name": "http://schema.org",
+    "foaf": "http://purl.org/foaf/",
+    "name": "http://schema.org/name",
     "note_content": "http://schema.org/text",
     "author": {
       "@id": "http://purl.org/dcterms/creator",
@@ -30,7 +30,7 @@
       },
       "date": "2015-12-07",
       "@id": "note/note9",
-      "@type": "notebook:note"
+      "@type": "note"
     },
     "note8": {
       "note_content": "Wednesday morning, the University of North Carolina at Chapel Hill received a report about an armed man on campus.  The Department of Public Safety sent a message to all students and staff to remain indoors until further notice.  We are awaiting a comment from Senator Shaw.",
@@ -42,7 +42,7 @@
       },
       "date": "2015-12-03",
       "@id": "note/note8",
-      "@type": "notebook:note"
+      "@type": "note"
     },
     "note1": {
       "note_content": "Today, Senator Shaw left the office to get coffee.  He went to Starbucks and ordered a cup of coffee.",
@@ -54,7 +54,7 @@
       },
       "date": "2015-11-03",
       "@id": "note/note1",
-      "@type": "notebook:note"
+      "@type": "note"
     },
     "note3": {
       "note_content": "Senator Shaw sat behind his desk in a swivel chair and leaned back to drink his coffee.  Unfortunately, Senator Shaw leaned back a little too far with a little too much force and spilled his coffee all down his front.",
@@ -66,7 +66,7 @@
       },
       "date": "2015-11-03",
       "@id": "note/note3",
-      "@type": "notebook:note"
+      "@type": "note"
     },
     "note2": {
       "note_content": "After returning to the office from Starbucks, Senator Shaw enjoyed his Pumpkin Spice Latte.",
@@ -78,7 +78,7 @@
       },
       "date": "2015-11-03",
       "@id": "note/note2",
-      "@type": "notebook:note"
+      "@type": "note"
     },
     "note5": {
       "note_content": "Senator Shaw, with refreshing candor, takes to social media to share his opinions on society, current events, and politics.  Though a senator, it is uncommon for employees to speak outside of their institution's beliefs.  Shaw frequently voices his personal views, not just those of his party or employer.  It is a nice change for professionals to be able to share their opinions honestly; professionals are people and therefore are as entitled to opinions just as any other.",
@@ -90,7 +90,7 @@
       },
       "date": "2015-11-18",
       "@id": "note/note5",
-      "@type": "notebook:note"
+      "@type": "note"
     },
     "note4": {
       "note_content": "In a tweet the other day, Senator Shaw discouraged students pursuing higher education from using modern diction in their papers.  He reasons that the impermanence of these terms will negatively affect the reputation and message of the author in the future.",
@@ -102,7 +102,7 @@
       },
       "date": "2015-11-05",
       "@id": "note/note4",
-      "@type": "notebook:note"
+      "@type": "note"
     },
     "note7": {
       "note_content": "Senator Shaw spent time at home for Thanksgiving break.  It was discovered that he does not like sweet potatoes.",
@@ -114,7 +114,7 @@
       },
       "date": "2015-11-27",
       "@id": "note/note7",
-      "@type": "notebook:note"
+      "@type": "note"
     },
     "note6": {
       "note_content": "This past Thursday, Senator Shaw gave a lecture to students at the University of North Carolina at Chapel Hill about microdata.  Sources say the lecture was 'the best yet' and 'much better than the HTML presentation'.",
@@ -126,7 +126,7 @@
       },
       "date": "2015-11-21",
       "@id": "note/note6",
-      "@type": "notebook:note"
+      "@type": "note"
     }
   },
   "@id": "notelist"

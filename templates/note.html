@@ -1,29 +1,29 @@
 <!doctype html>
 <link rel="alternate" type="application/json" href="{{ request.path }}.json">
-<title>{{ helprequest.title }}</title>
+<title>{{ note.title }}</title>
 
 <body>
 
 <a href="{{ request.path }}.json">
 view data as JSON-LD</a>
 
-<h1 class="title">{{ helprequest.title }}</h1>
+<h1 class="title">{{ note.title }}</h1>
 
 <p class="author">
-  <a href="{{ helprequest.author.profile_url }}">
-      <span>{{ helprequest.author.name }}</span></a>
+  <a href="{{ note.author.profile_url }}">
+      <span>{{ note.author.name }}</span></a>
 </p>
 
 
 <time
-      datetime="{{ helprequest.date }}">{{ helprequest.date }}</time>
+      datetime="{{ note.date }}">{{ note.date }}</time>
 
-<form class="updateNote" method="patch">
+<form class="updateNote" method="post">
   <br>
 
   <label class="content">Content<br>
 
-    <textarea rows="20" cols="80" name="note_content">{{helprequest.note_content}}</textarea>
+    <textarea rows="20" cols="80" name="note_content">{{note.note_content}}</textarea>
   </label>
   <br>
   <input class="update" type="submit" value="update note">
@@ -46,5 +46,5 @@ view data as JSON-LD</a>
   </script>
 </form>
 
-<a rel="collection" href="{{ url_for('helprequestlist') }}">all notes</a>
+<a rel="https://aeshin.org/teaching/inls-620/2015/fa/notebook/collection" href="{{ url_for('notelist') }}">all notes</a>
 </body>
