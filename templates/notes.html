@@ -4,9 +4,9 @@
 
 <!--
 {% if request.args["sort_by"] == "title" %}
-<a href="{{ url_for('helprequestlist') }}?sort_by=date">sort by date</a>
+<a href="{{ url_for('notelist') }}?sort_by=date">sort by date</a>
 {% else %}
-<a href="{{ url_for('helprequestlist') }}?sort_by=title">sort by title</a>
+<a href="{{ url_for('notelist') }}?sort_by=title">sort by title</a>
 {% endif %}
 -->
 
@@ -14,21 +14,21 @@
 
 <table class="notes-table" style="width: 100%; border: 1px solid black;">
   <tr>
-    <td class="date"><a rel="collection" href="{{ url_for('helprequestlist') }}?sort_by=date">Date</td></a>
-    <td class="title"><a rel="collection" href="{{ url_for('helprequestlist') }}?sort_by=title">Title</td></a>
-    <td class="author"><a rel="collection" href="{{ url_for('helprequestlist') }}?sort_by=author">Author</td></a>
+    <td class="date"><a rel="collection" href="{{ url_for('notelist') }}?sort_by=date">Date</td></a>
+    <td class="title"><a rel="collection" href="{{ url_for('notelist') }}?sort_by=title">Title</td></a>
+    <td class="author"><a rel="collection" href="{{ url_for('notelist') }}?sort_by=author">Author</td></a>
   </tr>
-  {% for helprequest_id, helprequest in helprequests %}
+  {% for note_id, note in notes %}
   <tr class="note">
-    <td class="date"><time>{{ helprequest.date }}</time></td>
+    <td class="date"><time>{{ note.date }}</time></td>
     <td class="title">
-    <a rel="item" href="{{ url_for('helprequest', helprequest_id=helprequest_id) }}">
-      <span>{{ helprequest.title }}</span>
+    <a rel="item" href="{{ url_for('note', note_id=note_id) }}">
+      <span>{{ note.title }}</span>
     </a>
     </td>
     <td class="author">
-      <a href="{{ helprequest.author.profile_url }}">
-      <span>{{ helprequest.author.name }}</span></a>
+      <a href="{{ note.author.profile_url }}">
+      <span>{{ note.author.name }}</span></a>
     </td>
   </tr>
   {% endfor %}
@@ -36,7 +36,7 @@
 
 <br>
 
-<form class="createNote" action="{{ url_for('helprequestlist') }}" method="post">
+<form class="createNote" action="{{ url_for('notelist') }}" method="post">
   <label>Author
     <input name="author" type="text">
   </label>
