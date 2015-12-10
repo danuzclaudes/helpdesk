@@ -14,9 +14,9 @@
 
 <table class="notes-table" style="width: 100%; border: 1px solid black;">
   <tr>
-    <td class="date"><a rel="https://aeshin.org/teaching/inls-620/2015/fa/notebook/collection" href="{{ url_for('notelist') }}?sort_by=date">Date</td></a>
-    <td class="title"><a rel="https://aeshin.org/teaching/inls-620/2015/fa/notebook/collection" href="{{ url_for('notelist') }}?sort_by=title">Title</td></a>
-    <td class="author"><a rel="https://aeshin.org/teaching/inls-620/2015/fa/notebook/collection" href="{{ url_for('notelist') }}?sort_by=author">Author</td></a>
+    <td class="date"><a rel="https://aeshin.org/teaching/inls-620/2015/fa/notebook/collection" href="{{ url_for('notelist') }}?sort_by=date">Date</a></td>
+    <td class="title"><a rel="https://aeshin.org/teaching/inls-620/2015/fa/notebook/collection" href="{{ url_for('notelist') }}?sort_by=title">Title</a></td>
+    <td class="author"><a rel="https://aeshin.org/teaching/inls-620/2015/fa/notebook/collection" href="{{ url_for('notelist') }}?sort_by=author">Author</a></td>
   </tr>
   {% for note_id, note in notes %}
   <tr class="note">
@@ -58,8 +58,10 @@
 <div class="twitters" style="width: 800px; border: 1px solid black;">
   <ul>
   {% for (creation_date, text) in tdata[:5] %}
-  <li><pre>{{ creation_date }}</pre></li>
-  <span>{{ text }}</span>
+  <li>
+    <pre>{{ creation_date }}</pre>
+    <span>{{ text }}</span>
+  </li>
   {% endfor %}
   </ul>
 </div>
