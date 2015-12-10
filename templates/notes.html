@@ -14,15 +14,15 @@
 
 <table class="notes-table" style="width: 100%; border: 1px solid black;">
   <tr>
-    <td class="date"><a rel="collection" href="{{ url_for('notelist') }}?sort_by=date">Date</td></a>
-    <td class="title"><a rel="collection" href="{{ url_for('notelist') }}?sort_by=title">Title</td></a>
-    <td class="author"><a rel="collection" href="{{ url_for('notelist') }}?sort_by=author">Author</td></a>
+    <td class="date"><a rel="https://aeshin.org/teaching/inls-620/2015/fa/notebook/collection" href="{{ url_for('notelist') }}?sort_by=date">Date</td></a>
+    <td class="title"><a rel="https://aeshin.org/teaching/inls-620/2015/fa/notebook/collection" href="{{ url_for('notelist') }}?sort_by=title">Title</td></a>
+    <td class="author"><a rel="https://aeshin.org/teaching/inls-620/2015/fa/notebook/collection" href="{{ url_for('notelist') }}?sort_by=author">Author</td></a>
   </tr>
   {% for note_id, note in notes %}
   <tr class="note">
     <td class="date"><time>{{ note.date }}</time></td>
     <td class="title">
-    <a rel="item" href="{{ url_for('note', note_id=note_id) }}">
+    <a rel="https://aeshin.org/teaching/inls-620/2015/fa/notebook/item" href="{{ url_for('note', note_id=note_id) }}">
       <span>{{ note.title }}</span>
     </a>
     </td>
