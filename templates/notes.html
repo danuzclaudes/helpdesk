@@ -1,7 +1,7 @@
 <!doctype html>
 <link rel="alternate" type="application/json" href="{{ request.path }}.json">
 <title>Notebook</title>
-
+<body>
 <!--
 {% if request.args["sort_by"] == "title" %}
 <a href="{{ url_for('notelist') }}?sort_by=date">sort by date</a>
@@ -63,3 +63,4 @@
   {% endfor %}
   </ul>
 </div>
+</body>
