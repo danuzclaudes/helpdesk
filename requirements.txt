@@ -3,3 +3,4 @@ flask-restful
 rdflib
 rdflib-jsonld
 html5lib
+requests
